@@ -8,3 +8,6 @@ Route::get('astro/get/products/{id}', [\App\Http\Controllers\ProductController::
 Route::get('api/order', [\App\Http\Controllers\OrderController::class, 'insertOrder']);
 Route::get('astro/get/shoppingcart', [\App\Http\Controllers\ShoppingcartController::class, 'getShoppingcartItems']);
 Route::get('api/delete/order', [\App\Http\Controllers\OrderController::class, 'deleteOrder']);
+
+Route::get('/order', [\App\Http\Controllers\PaymentController::class, 'preparePayment']);
+Route::get('/order/success/{id}', [\App\Http\Controllers\SuccessController::class, 'index'])->name('order.success');
