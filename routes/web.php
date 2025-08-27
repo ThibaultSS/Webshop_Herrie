@@ -11,3 +11,5 @@ Route::get('api/delete/order', [\App\Http\Controllers\OrderController::class, 'd
 
 Route::get('/order', [\App\Http\Controllers\PaymentController::class, 'preparePayment']);
 Route::get('/order/success/{id}', [\App\Http\Controllers\SuccessController::class, 'index'])->name('order.success');
+
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'submit']);

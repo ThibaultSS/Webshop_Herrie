@@ -15,10 +15,12 @@ class PaymentController extends Controller
 {
     $total = \DB::table('shoppingcarts')
     ->join('products', 'shoppingcarts.product_id', '=', 'products.id')
+    ->where('shoppingcarts.cart_number', 0)
     ->selectRaw('SUM(shoppingcarts.amount * products.price) as total')
     ->value('total');
     
-    $ordersForIntel = Shoppingcart::all()
+    $ordersForIntel = Shoppingcart::where('cart_number', 0)
+    ->get()
     ->map(function ($cart) {
         return [
             'product_id' => $cart->product_id,
